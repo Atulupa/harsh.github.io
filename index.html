@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculator App</title>
+<style>
+body {
+  font-family: sans-serif;
+}
+
+.calculator {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
+.display {
+  width: 100%;
+  height: 50px;
+  text-align: right;
+  font-size: 24px;
+  border: 1px solid #ccc;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+button {
+  width: 25%;
+  height: 50px;
+  font-size: 24px;
+  border: 1px solid #ccc;
+}
+</style>
+</head>
+<body>
+<div class="calculator">
+  <input type="text" class="display" id="display" />
+  <div class="buttons">
+    <button type="button" id="7">7</button>
+    <button type="button" id="8">8</button>
+    <button type="button" id="9">9</button>
+    <button type="button" id="/">/</button>
+    <button type="button" id="4">4</button>
+    <button type="button" id="5">5</button>
+    <button type="button" id="6">6</button>
+    <button type="button" id="*">*</button>
+    <button type="button" id="1">1</button>
+    <button type="button" id="2">2</button>
+    <button type="button" id="3">3</button>
+    <button type="button" id="-">-</button>
+    <button type="button" id="0">0</button>
+    <button type="button" id=".">.</button>
+    <button type="button" id="=">=</button>
+    <button type="button" id="c">C</button>
+  </div>
+</div>
+
+<script>
+const display = document.getElementById('display');
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    display.value += button.textContent;
+  });
+});
+
+document.getElementById('c').addEventListener('click', () => {
+  display.value = '';
+});
+
+document.getElementById('=').addEventListener('click', () => {
+  const expression = display.value;
+  const result = eval(expression);
+  display.value = result;
+});
+</script>
+</body>
+</html>
